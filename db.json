@@ -1,0 +1,93 @@
+{
+    "properties": [
+        {
+        "id": 1,
+        "price": 2800,
+        "image": "https://wp-tid.zillowstatic.com/streeteasy/2/gp9999-b29963-1024x684.jpg",
+        "location": "East Village",
+        "bed": 2,
+        "bath": 1,
+        "sqft": 400,
+        "viewed": 45,
+        "liked": 12
+    },
+    {
+        "id": 2,
+        "price": 3200,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcSXQLY3Kw-OOFH2y_FMR55gXTozVImzvHt9BcYjwbwQvc8YGfrCGFv8FhBfmVr1dUB2A&usqp=CAU",
+        "location": "Chelsea",
+        "bed": 1,
+        "bath": 1,
+        "sqft": 350,
+        "viewed": 32,
+        "liked": 8
+    }, 
+     {
+        "id": 3,
+        "price": 2200,
+        "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
+        "location": "East Village",
+        "bed": 2,
+        "bath": 1,
+        "sqft": 400,
+        "viewed": 45,
+        "liked": 12
+     },
+
+    {
+        "id": 4,
+        "price": 4500,
+        "image": "https://photos.zillowstatic.com/fp/58190ee70f64d879136f3e33b674c5e4-se_large_800_400.webp",
+        "location": "East Village",
+        "bed": 3,
+        "bath": 1,
+        "sqft": 400,
+        "viewed": 52,
+        "liked": 18
+    },
+    {
+        "id": 5,
+        "price": 1900,
+        "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
+        "location": "East Village",
+        "bed": 3,
+        "bath": 1,
+        "sqft": 400,
+        "viewed": 45,
+        "liked": 12
+    },
+    {
+        "id": 6,
+        "price": 2800,
+        "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
+        "location": "East Village",
+        "bed": 3,
+        "bath": 1,
+        "sqft": 400,
+        "viewed": 45,
+        "liked": 12
+    },
+    {
+        "id": 7,
+        "price": 2800,
+        "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
+        "location": "East Village",
+        "bed": 3,
+        "bath": 1,
+        "sqft": 400,
+        "viewed": 45,
+        "liked": 12
+    },
+    {
+        "id": 8,
+        "price": 2800,
+        "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
+        "location": "East Village",
+        "bed": 3,
+        "bath": 1,
+        "sqft": 400,
+        "viewed": 45,
+        "liked": 12
+    }
+    ]
+}
