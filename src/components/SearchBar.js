@@ -1,9 +1,12 @@
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 const SearchBar = () =>
 {
     return(
         <div>
-        <input type="search" placeholder="Where are you looking?"></input>
-        <button>Find</button>
+        <Form.Control type="search" placeholder="Where are you looking?"/>
+        <Button variant="success">Find</Button>{' '}
         </div>
     )
 }
