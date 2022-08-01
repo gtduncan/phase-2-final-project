@@ -4,30 +4,37 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Accordion } from "react-bootstrap";
 
 function ListingCard({property}) {
-    const {location, price, image, bed, bath, sqft, viewed, liked} = property
+    const {location, list_price, primary_photo, description, sqft, viewed, liked} = property
 
     return (
     <Card className = 'listing-card' style={{ width: '20rem' }}>
     <Card.Body>
-      <Card.Img variant="top" src={image} />
+      <Card.Img id="card-image" variant="top" src={primary_photo ? primary_photo.href : 'N/A'} />
       </Card.Body>
-      <Card.Body>
-        <Card.Title>{location}</Card.Title>
-        <Card.Text>
-          Price: ${price}/mo
-        </Card.Text>
-        <Card.Text>
-          Bed: {bed}
-        </Card.Text>
-        <Card.Text>
-          Bath: {bath}
-        </Card.Text>
-        <Card.Text>
-          {sqft} square feet
-        </Card.Text>
-        </Card.Body>
+        <Card.Title>{location.address.line}</Card.Title>
+        <Card.Subtitle>{`${location.address.city}`}</Card.Subtitle>
+        <Accordion className="details-accordion">
+            <Accordion.Item eventKey="0">
+            <Accordion.Header>Details</Accordion.Header>
+            <Accordion.Body>
+                <Card.Text>
+                    Price: {list_price ? '$'+ list_price : 'N/A'}
+                </Card.Text>
+                <Card.Text>
+                    Bed: {description.beds}
+                </Card.Text>
+                <Card.Text>
+                    Bath: {description.baths}
+                </Card.Text>
+                <Card.Text>
+                    {description.sqft} square feet
+                 </Card.Text>
+            </Accordion.Body>
+        </Accordion.Item>
+        </Accordion>
         <Card.Footer>
         <Button variant="Success">Viewed: {viewed}</Button>
         <Button variant="success">Liked: {liked}</Button>
