@@ -2,19 +2,21 @@ import React from "react";
 import ListingContainer from "./ListingContainer";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function ListingCard({property}) {
     const {location, price, image, bed, bath, sqft, viewed, liked} = property
 
     return (
-    <Card style={{ width: '18rem' }}>
+    <Card className = 'listing-card' style={{ width: '20rem' }}>
+    <Card.Body>
       <Card.Img variant="top" src={image} />
+      </Card.Body>
       <Card.Body>
-      <Card.Header>{location}</Card.Header>
         <Card.Title>{location}</Card.Title>
         <Card.Text>
-          Price: {price}
+          Price: ${price}/mo
         </Card.Text>
         <Card.Text>
           Bed: {bed}
@@ -23,10 +25,13 @@ function ListingCard({property}) {
           Bath: {bath}
         </Card.Text>
         <Card.Text>
-          Square Feet: {sqft}
+          {sqft} square feet
         </Card.Text>
-        <Button variant="success">Go somewhere</Button>
-      </Card.Body>
-    </Card>) }
+        </Card.Body>
+        <Card.Footer>
+        <Button variant="Success">Viewed: {viewed}</Button>
+        <Button variant="success">Liked: {liked}</Button>
+        </Card.Footer>
+    </Card> )}
 
     export default ListingCard;

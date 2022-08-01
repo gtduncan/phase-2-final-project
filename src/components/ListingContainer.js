@@ -1,13 +1,15 @@
 import ListingCard from './ListingCard'
+import Container from 'react-bootstrap/Container';
 
 const ListingContainer = ({properties}) => {
     const mappedProperties = properties.map((property) => {
         return <ListingCard property={property}/>
     })
     return(
-        <div>
+        
+        <Container className="listing-container" fluid="md">
             {mappedProperties}
-        </div>
+        </Container>
     )
 }
 
