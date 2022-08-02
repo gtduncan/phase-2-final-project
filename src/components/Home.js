@@ -3,13 +3,17 @@ import SearchBar from './SearchBar.js'
 import ListingContainer from './ListingContainer.js'
 import Button from 'react-bootstrap/Button';
 
-const Home = ({properties, currentPage, setCurrentPage}) => {
+const Home = ({properties, currentPage, setCurrentPage, getLocation}) => {
     
     return(
         <div>
-        <SearchBar/>
+        <SearchBar getLocation={getLocation}/>
         <ListingContainer properties={properties}/>
-        <Button bg='dark' variant='dark' onClick={console.log(currentPage)}>Right</Button>
+        <div id="page-turner">
+        {currentPage > 1 && <Button bg='dark' className="item" variant='dark' onClick={() => setCurrentPage(currentPage-1)}>{'<-'}</Button>}
+        <p id="number" className="item">{currentPage}</p>
+        <Button bg='dark' variant='dark' className="item" onClick={() => setCurrentPage(currentPage+1)}>{'->'}</Button>
+        </div>
         </div>
     )
 }

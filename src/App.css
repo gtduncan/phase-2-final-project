@@ -77,4 +77,27 @@
 #form-container {
   width: 480px;
   text-align: left;
+  background-color: white;
+}
+
+#page-turner {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.item {
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.main-container {
+  background-image: url("../public/images/houses.jpg");
+  background-size: cover;
+}
+
+.carousel-inner > .item >img{
+  min-height : 300px;
+  max-height : 300px;
+  width : 100%;
 }

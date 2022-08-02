@@ -7,9 +7,12 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
+//const backgroundImage = new URL("./public/images/houses.jpg")
+
 const List = () => {
     return (
-       <Container id='form-container'>
+        <section className='main-container'>
+       <Container id='form-container' >
        <Form>
             {/* <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
                 <Form.Label>Name</Form.Label>
@@ -32,6 +35,10 @@ const List = () => {
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="name@example.com" />
             </Form.Group>
+            <Form.Group className='mb-3' controlId='number'>
+                <Form.Label>Number</Form.Label>
+                <Form.Control type='phone-number' placeholder='Enter phone number'/>
+                </Form.Group>
             <Form.Group className="mb-3" controlId="formGridAddress1">
                 <Form.Label>Address </Form.Label>
                 <Form.Control placeholder="Apartment, studio, or floor" />
@@ -107,6 +114,10 @@ const List = () => {
                     <Form.Control />
                 </Form.Group>
             </Row>
+                <Form.Group controlId="formFileMultiple" className="mb-3">
+                    <Form.Label>Insert Photos</Form.Label>
+                    <Form.Control type="file" multiple />
+                </Form.Group>
 
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -119,6 +130,7 @@ const List = () => {
             </Button>
         </Form>
         </Container>
+        </section>
     );
 }
 

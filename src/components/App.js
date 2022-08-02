@@ -4,10 +4,27 @@ import '../App.css';
 import Home from './Home.js'
 import NavBar from './NavBar.js'
 import List from './List';
+import Footer from './Footer';
+
 
 const App = () => {
   const [properties, setProperties] = useState([])
-  const [currentPage, setCurrentPage] = useState([1])
+  const [currentPage, setCurrentPage] = useState(1)
+  const [latitude, setLatitude] = useState(0)
+  const [longitude, setLongitude] = useState(0)
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+  
+  function showPosition(position) {
+    setLatitude(position.coords.latitude)
+    setLongitude(position.coords.longitude)
+  }
 
   // useEffect(() => {
   //   fetch('http://localhost:3000/properties')
@@ -55,23 +72,24 @@ useEffect(() => {
     .then(response => response.json())
     .then(response => {setProperties(response.properties); console.log(response)})
 
-}, [])
+}, [currentPage])
 
   return (
     <div className="App">
       <Router>
       <NavBar/>
         <Routes>
-          <Route exact path="/" element={<Home properties={properties} currentPage={currentPage} setCurrentPage={setCurrentPage}/>}>
+          <Route exact path="/" element={<Home properties={properties} getLocation={getLocation} showPosition={showPosition} currentPage={currentPage} setCurrentPage={setCurrentPage}/>}>
           </Route>
-          <Route path="/listing">
+          <Route path="/listingdesc">
           </Route>
           <Route path="/list" element={<List/>}>
           </Route>
         </Routes>
+        <Footer/>
+        
     </Router>
     </div>
-  );
-}
+  );}
 
 export default App;
