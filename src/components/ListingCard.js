@@ -7,12 +7,13 @@ import Col from 'react-bootstrap/Col';
 import { Accordion, Carousel, Nav} from "react-bootstrap";
 
 function ListingCard({property}) {
-    const {location, list_price, primary_photo, description, sqft, viewed, liked, photos} = property
+    const [myId, setMyId] = useState(0)
+    const {location, list_price, primary_photo, description, sqft, photos, id, isLiked} = property
 
-    
-   //console.log(photos)
+    const [like, toggleLike] = useState(isLiked)
+
     const mappedPhotos = () => {
-        return photos.map((photo) => {
+        return photos?.map((photo) => {
         return (
         <Carousel.Item>
             <img className="d-block w-100" id="card-image" variant="top" src={photo.href}/>
@@ -34,16 +35,47 @@ function ListingCard({property}) {
     const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
     };
+
+    const likeProperty = async () => {
+        if(!like)
+        {
+        toggleLike(!like)
+        const res = await fetch('http://localhost:3000/favorites', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(property)
+      })
+        const data = await res.json()
+        console.log(data.id)
+        setMyId(data.id)
+        }
+        if(like)
+        {
+        toggleLike(!like)
+        const res = await fetch(`http://localhost:3000/favorites/${id ? id: myId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(property)
+      })
+        const data = await res.json()
+        console.log(data)
+        }
+    }
     
     return (
-    <Card className = 'listing-card' style={{ width: '20rem' }}>
+    <Card className = 'listing-card' style={{ width: '18rem' }}>
     <Card.Body>
     <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
     {mappedPhotos()}
     </Carousel>
     </Card.Body>
         <Card.Title>{location.address.line}</Card.Title>
-        <Card.Subtitle>{`${location.address.city}`}</Card.Subtitle>
+        <Card.Subtitle>{`${location.address.city}, ${location.address.state}`}</Card.Subtitle>
+        <Card.Subtitle id='zip-code'>{location.address.postal_code}</Card.Subtitle>
         <Accordion className="details-accordion">
             <Accordion.Item eventKey="0">
             <Accordion.Header>Details</Accordion.Header>
@@ -64,8 +96,7 @@ function ListingCard({property}) {
         </Accordion.Item>
         </Accordion>
         <Card.Footer>
-        <Button variant="Success">Viewed: {viewed}</Button>
-        <Button variant="success">Liked: {liked}</Button>
+        <Button onClick={() => likeProperty()}id='like-button' variant="success">{like ? 'Unlike' : 'Like'}</Button>
         </Card.Footer>
     </Card> )}
 

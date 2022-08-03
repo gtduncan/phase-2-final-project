@@ -1,18 +1,21 @@
 import Nav from './NavBar.js'
 import SearchBar from './SearchBar.js'
 import ListingContainer from './ListingContainer.js'
-import Button from 'react-bootstrap/Button';
+import {Pagination, Button} from 'react-bootstrap';
 
-const Home = ({properties, currentPage, setCurrentPage, getLocation}) => {
+
+const Home = ({properties, currentPage, setCurrentPage, getLocation, setCurrentCity, setSort, currentState, setCurrentState}) => {
     
     return(
         <div>
-        <SearchBar getLocation={getLocation}/>
+        <SearchBar getLocation={getLocation} setCurrentState={setCurrentState} currentState={currentState} setCurrentCity={setCurrentCity} setSort={setSort} />
         <ListingContainer properties={properties}/>
         <div id="page-turner">
-        {currentPage > 1 && <Button bg='dark' className="item" variant='dark' onClick={() => setCurrentPage(currentPage-1)}>{'<-'}</Button>}
-        <p id="number" className="item">{currentPage}</p>
-        <Button bg='dark' variant='dark' className="item" onClick={() => setCurrentPage(currentPage+1)}>{'->'}</Button>
+        <Pagination variant='dark'>
+            {currentPage > 1 && <Pagination.Prev onClick={() => setCurrentPage(currentPage-1)} />}
+            <Pagination.Item>{currentPage}</Pagination.Item>
+            <Pagination.Next onClick={() => setCurrentPage(currentPage+1)} />
+        </Pagination>
         </div>
         </div>
     )

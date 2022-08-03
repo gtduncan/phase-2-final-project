@@ -47,17 +47,36 @@
   box-sizing: border-box;
 }
 
-#search-bar
+.search-item
 {
-  width:50%;
+  width:150%;
+  height: 50%;
   text-align: center;
   margin-right: 15px;
+  margin-top: 10px;
+}
+
+.search-buttons
+{
+  margin-top: 7px;
+  height: 50%;
 }
 
 #search-div
 {
   display: flex;
   justify-content: center;
+  height: 100px;
+  padding-top: 20px;
+
+
+}
+#search-form
+{
+  display: flex;
+  width:75%;
+  justify-content: center;
+  height:100%;
 }
 
 #location-button
@@ -80,6 +99,11 @@
   background-color: white;
 }
 
+.search-item {
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
 #page-turner {
   display: flex;
   justify-content: center;
@@ -100,4 +124,18 @@
   min-height : 300px;
   max-height : 300px;
   width : 100%;
+}
+
+#like-button
+{
+  width: 85%;
+}
+
+#zip-code
+{
+  margin-top: 5px;
+}
+
+#NavBar-Container {
+  height: 100px;
 }
