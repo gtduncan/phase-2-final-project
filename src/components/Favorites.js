@@ -1,14 +1,13 @@
 import {React, useState} from 'react'
 import ListingCard from './ListingCard.js'
 
-const Favorites = ({favorites}) =>
+const Favorites = ({favorites, getFavorites}) =>
 {
     const mappedFavorites = favorites?.map((favorite) => {
         console.log(favorites)
-        return <ListingCard property={favorite} favorites={favorites} isLiked={true}/>
+        return <ListingCard property={favorite} favorites={favorites} getFavorites={getFavorites} isLiked={true}/>
     })
     return <div>
-            <h1>Favorites</h1>
             <div className="listing-container">
             {mappedFavorites}
             </div>

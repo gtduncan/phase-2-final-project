@@ -4,14 +4,27 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Accordion, Carousel, Nav} from "react-bootstrap";
+import { Accordion, Carousel, Nav, Popover, OverlayTrigger} from "react-bootstrap";
+import GoogleMapReact from 'google-map-react';
 
-function ListingCard({property}) {
-    const [myId, setMyId] = useState(0)
-    const {location, list_price, primary_photo, description, sqft, photos, id, isLiked} = property
+function ListingCard({property, favorites, map, setMap, getFavorites, isLiked}) {
+
+
+    const {location, list_price, primary_photo, description, sqft, photos, id} = property
+    const AnyReactComponent = () => <img id='map-marker' src='../images/mapmarker.png'/>;
 
     const [like, toggleLike] = useState(isLiked)
+    const [myId, setMyId] = useState(0)
 
+    const googleMapProps = {
+        center: {
+          lat: location.address.coordinate.lat,
+          lng: location.address.coordinate.lon
+        },
+        zoom: 10
+      };
+    
+    
     const mappedPhotos = () => {
         return photos?.map((photo) => {
         return (
@@ -21,12 +34,30 @@ function ListingCard({property}) {
 
     })
 }
-// console.log(photos[0].href)
+
+const popover = (
+    <Popover id="popover-basic">
+      <Popover.Body>
+      <div style={{ height: '40vh', width: '100%' }}>
     
-//console.log(photos[0].href)
+        <GoogleMapReact
+  bootstrapURLKeys={{ key: "AIzaSyDej2gyib9LdZv2wQO2_6MInDwv-glcoeE&q"}}
+  defaultCenter={googleMapProps.center ? googleMapProps.center : null}
+  defaultZoom={googleMapProps.zoom}>
+      <AnyReactComponent lat={location.address.coordinate.lat}
+    lng={location.address.coordinate.lon}
+    text="My Marker"/>
+  </GoogleMapReact>
+  </div>
+      </Popover.Body>
+    </Popover>
+  );
 
     const [index, setIndex] = useState(0);
     const [currentPhoto, setCurrentPhoto] = useState(true)
+
+    // api key- AIzaSyDej2gyib9LdZv2wQO2_6MInDwv-glcoeE&q
+
 
     const setPhoto = () => {
         setCurrentPhoto(currentPhoto => !currentPhoto)
@@ -54,16 +85,18 @@ function ListingCard({property}) {
         if(like)
         {
         toggleLike(!like)
-        const res = await fetch(`http://localhost:3000/favorites/${id ? id: myId}`, {
+        const res1 = await fetch(`http://localhost:3000/favorites/${id ? id: myId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(property)
       })
-        const data = await res.json()
+        const data = await res1.json()
         console.log(data)
+        getFavorites()
         }
+
     }
     
     return (
@@ -92,11 +125,15 @@ function ListingCard({property}) {
                 <Card.Text>
                     Size: {description.sqft ? description.sqft + ' sq. feet' : 'N/A'}
                  </Card.Text>
+                 <OverlayTrigger trigger="click" placement="top" overlay={popover}>
+                <Button variant="success">Location</Button>
+                </OverlayTrigger>
             </Accordion.Body>
         </Accordion.Item>
         </Accordion>
         <Card.Footer>
         <Button onClick={() => likeProperty()}id='like-button' variant="success">{like ? 'Unlike' : 'Like'}</Button>
+    
         </Card.Footer>
     </Card> )}
 

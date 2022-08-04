@@ -4,12 +4,12 @@ import ListingContainer from './ListingContainer.js'
 import {Pagination, Button} from 'react-bootstrap';
 
 
-const Home = ({properties, currentPage, setCurrentPage, getLocation, setCurrentCity, setSort, currentState, setCurrentState}) => {
+const Home = ({properties, currentPage, setCurrentPage, getLocation, setCurrentCity, setSort, currentState, setCurrentState, getFavorites, setMap, map}) => {
     
     return(
         <div>
-        <SearchBar getLocation={getLocation} setCurrentState={setCurrentState} currentState={currentState} setCurrentCity={setCurrentCity} setSort={setSort} />
-        <ListingContainer properties={properties}/>
+        <SearchBar getLocation={getLocation} setCurrentPage={setCurrentPage} setCurrentState={setCurrentState} currentState={currentState} setCurrentCity={setCurrentCity} setSort={setSort} />
+        <ListingContainer setMap={setMap} map={map} properties={properties} getFavorites={getFavorites}/>
         <div id="page-turner">
         <Pagination variant='dark'>
             {currentPage > 1 && <Pagination.Prev onClick={() => setCurrentPage(currentPage-1)} />}

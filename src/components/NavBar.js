@@ -5,8 +5,8 @@ import Container from 'react-bootstrap/Container'
 
 
 const NavBar = () => {
-    return(<div>
-        <Navbar classname='NavBar-Container' bg="dark" variant="dark">
+    return(
+        <Navbar className='NavBar-Container' bg="dark" variant="dark" sticky='top' >
         <Container>
           <Navbar.Brand href="/">Property Hunter</Navbar.Brand>
           <Nav className="me-auto">
@@ -16,8 +16,8 @@ const NavBar = () => {
           </Nav>
         </Container>
       </Navbar>
-        <hr />
-    </div>)
+    )
+    
 }
 
 export default NavBar

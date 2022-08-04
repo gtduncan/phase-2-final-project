@@ -14,11 +14,9 @@ const List = () => {
         <section className='main-container'>
        <Container id='form-container' >
        <Form>
-            {/* <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-                <Form.Label>Name</Form.Label>
-                <Form.Control type='name' placeholder='Name'/>
-                </Form.Group> */}
-                <p>Ready to Sell</p>
+           
+                <h1>Ready to Sell</h1>
+                <p>Let us help you find the best option.</p>
                 <br></br>
 
                 <p>Contact Information</p>
