@@ -10,6 +10,9 @@ import Container from 'react-bootstrap/Container';
 //const backgroundImage = new URL("./public/images/houses.jpg")
 
 const List = () => {
+    const defaultValues = {
+        firstName: '',
+    }
     return (
         <section className='main-container'>
        <Container id='form-container' >
@@ -22,22 +25,22 @@ const List = () => {
                 <p>Contact Information</p>
             <Row>
                 <Col>
-                    <Form.Control placeholder="First name" />
+                    <Form.Control placeholder="First name" controlId="firstName"/>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="Last name" />
+                    <Form.Control placeholder="Last name" controlId="lastName"/>
                 </Col>
             </Row>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Email address</Form.Label>
+            <Form.Group className="mb-3" controlId="">
+                <Form.Label>Email Address</Form.Label>
                 <Form.Control type="email" placeholder="name@example.com" />
             </Form.Group>
             <Form.Group className='mb-3' controlId='number'>
                 <Form.Label>Number</Form.Label>
                 <Form.Control type='phone-number' placeholder='Enter phone number'/>
                 </Form.Group>
-            <Form.Group className="mb-3" controlId="formGridAddress1">
+            <Form.Group className="mb-3" controlId="address">
                 <Form.Label>Address </Form.Label>
                 <Form.Control placeholder="Apartment, studio, or floor" />
             </Form.Group>

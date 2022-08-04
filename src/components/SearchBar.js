@@ -30,14 +30,11 @@ const handleChange = (e) => {
     setSort(e.target.value)
 }
 return(
+    <div>
     <div id="search-div">
-            <div className='myVideo'>
-            <video autoPlay muted loop id="myVideo1">
-                <source src='./images/BackgroundVid.mp4' type='video/mp4' />
-            </video>
         <Form id="search-form">
             <Form.Control className='search-item' id="search-bar" type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Where are you looking?"/>
-            <Form.Select  className='search-item' onChange={handleSetState} aria-label="State Select">
+            <Form.Select  className='search-item'  onChange={handleSetState} aria-label="State Select">
             <option>State</option>
             {statesMapped}
             </Form.Select>
@@ -51,10 +48,14 @@ return(
 
             </Form.Select>
             <Button id="search-button" className= 'search-buttons' type='submit' onClick={(e)=> handleSearchBar(e)} variant="success">Find</Button>{' '}
-            
         </Form>
-            </div>
-        </div>
+    </div>
+    <div className='myVideo'>
+    <video autoPlay muted loop id="myVideo1">
+        <source src='./images/BackgroundVid.mp4' type='video/mp4' />
+    </video>
+    </div>
+    </div>
     )
 }
 

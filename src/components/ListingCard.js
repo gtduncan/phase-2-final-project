@@ -100,7 +100,7 @@ const popover = (
     }
     
     return (
-    <Card className = 'listing-card' style={{ width: '18rem' }}>
+    <Card className = {id ? 'favorites-card':' listing-card' } bg="dark" style={{ width: '18rem' }}>
     <Card.Body>
     <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
     {mappedPhotos()}
@@ -111,8 +111,8 @@ const popover = (
         <Card.Subtitle id='zip-code'>{location.address.postal_code}</Card.Subtitle>
         <Accordion className="details-accordion">
             <Accordion.Item eventKey="0">
-            <Accordion.Header>Details</Accordion.Header>
-            <Accordion.Body>
+            <Accordion.Header className='accordion-header'>Details</Accordion.Header>
+            <Accordion.Body className='accordion-body'>
                 <Card.Text>
                     Price: {list_price ? '$'+ list_price.toLocaleString('en-US') : 'N/A'}
                 </Card.Text>

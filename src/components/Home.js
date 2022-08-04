@@ -11,7 +11,7 @@ const Home = ({properties, currentPage, setCurrentPage, getLocation, setCurrentC
         <SearchBar getLocation={getLocation} setCurrentPage={setCurrentPage} setCurrentState={setCurrentState} currentState={currentState} setCurrentCity={setCurrentCity} setSort={setSort} />
         <ListingContainer setMap={setMap} map={map} properties={properties} getFavorites={getFavorites}/>
         <div id="page-turner">
-        <Pagination variant='dark'>
+        <Pagination id="pagination" variant='dark'>
             {currentPage > 1 && <Pagination.Prev onClick={() => setCurrentPage(currentPage-1)} />}
             <Pagination.Item>{currentPage}</Pagination.Item>
             <Pagination.Next onClick={() => setCurrentPage(currentPage+1)} />

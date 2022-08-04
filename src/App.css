@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #282c34;;
 }
 
 .App-logo {
@@ -40,11 +41,26 @@
 .listing-container {
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 0;
+}
+
+.favorites-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .listing-card {
   margin: 15px;
   box-sizing: border-box;
+  position: relative;
+  bottom: 800px;
+  color: #E7E7E7;
+}
+
+.favorites-card {
+  margin: 15px;
+  box-sizing: border-box;
+  color: #E7E7E7;
 }
 
 .search-item
@@ -54,6 +70,11 @@
   text-align: center;
   margin-right: 15px;
   margin-top: 10px;
+}
+
+#search-bar
+{
+  width:400%
 }
 
 .search-buttons
@@ -67,23 +88,22 @@
   position: relative;
   display: flex;
   justify-content: center;
-  height: 350px;
-  width: 200;
-
-  padding-bottom: 20px;
+  height:500px;
+  width: 100%;
+  top: 100px;
+  z-index:1;
 }
 
 #myVideo1 {
   position: relative;
-  height: 350px;
-  width: 80vw;
-
-
+  height: 800px;
+  bottom: 800px;
+  z-index:0;
 }
 .myVideo {
   /* position: relative;
   height: 300px; */
-  width: 1200px;
+  /* width: 1200px; */
 
 }
 #search-form
@@ -112,17 +132,33 @@
 .details-accordion
 {
   margin-top: 20px;
+  color: red;
 }
+
+.accordion-body
+{
+  background-color:#282c34;
+  color: white;
+  border-color: #282c34
+}
+
+.accordion-header
+{
+  background-color:#282c34;
+}
+
 #form-container {
   width: 480px;
+  height: 85%;
   text-align: left;
+  margin-top: 0px;
+  margin-bottom: 0px;
   background-color: white;
 }
 
 .search-item {
   margin-left: 30px;
   margin-right: 10px;
-  
 }
 
 
@@ -131,6 +167,12 @@
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+}
+
+#pagination
+{
+  position: relative;
+  bottom: 800px;
 }
 
 .item {
@@ -160,7 +202,7 @@
 }
 /* Nav Bar */
 .NavBar-Container {
-  height: 80px;
+  height: 85px;
   
 }
 
@@ -173,4 +215,22 @@
 #popover-basic
 {
   width:600px
+}
+
+button.accordion-button.collapsed
+{
+  background-color: #282c34;
+  color: white;
+}
+
+.accordion-button:after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
+
+.filler
+{
+  height: 800px;
+}
+.footer {
+  height: 40px;
 }

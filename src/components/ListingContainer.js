@@ -1,8 +1,8 @@
 import ListingCard from './ListingCard'
-import Container from 'react-bootstrap/Container';
+import {Container, Pagination} from 'react-bootstrap';
 
 
-const ListingContainer = ({properties, setMap, getFavorites, map}) => {
+const ListingContainer = ({properties, setMap, currentPage, setCurrentPage, getFavorites, map}) => {
     const mappedProperties = properties?.map((property) => {
         if(property.location.address.coordinate !== null && property.location.address.coordinate !== null)
         {
@@ -11,9 +11,11 @@ const ListingContainer = ({properties, setMap, getFavorites, map}) => {
         
     })
     return(
+        <div>
         <Container className="listing-container" fluid="md">
             {mappedProperties}
         </Container>
+        </div>
     )
 }
 

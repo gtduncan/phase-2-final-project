@@ -11,6 +11,9 @@ const Favorites = ({favorites, getFavorites}) =>
             <div className="listing-container">
             {mappedFavorites}
             </div>
+            <div className="filler">
+                <p></p>
+            </div>
         </div>
 }
 
