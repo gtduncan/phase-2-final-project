@@ -1,59 +1,97 @@
 
 
-import React from 'react';
+import {React, useState} from 'react';
 import Form from 'react-bootstrap/Form';
-import {Button} from 'react-bootstrap';
+import {Button, Modal} from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
+
 //const backgroundImage = new URL("./public/images/houses.jpg")
 
 const List = () => {
+
+    const [show, setShow] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(values)
+    fetch('http://localhost:3000/under-review', {
+      method: "POST",
+      headers:
+      {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values)
+    })
+    .then((res)=> res.json())
+    .then((data)=> console.log(data))
+    setValues(defaultValues)
+    setShow(true)
+  }
+
+  const handleClose = () => setShow(false);
+
     const defaultValues = {
         firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        address: '',
+        city: '',
+        state: '',
+        zip: '',
+        comments: ''
     }
+
+    const [values, setValues] = useState(defaultValues)
+
+    const handleChange = (e) => {
+    setValues({...values, [e.target.name]: e.target.value})
+  }
+
     return (
         <section className='main-container'>
        <Container id='form-container' >
        <Form>
            
-                <h1>Ready to Sell</h1>
-                <p>Let us help you find the best option.</p>
+                <h1 className='form-header'>Ready to Sell</h1>
+                <p className='form-header'>Let us help you find the best option.</p>
                 <br></br>
 
-                <p>Contact Information</p>
+                <p className='form-label'>Contact Information</p>
             <Row>
                 <Col>
-                    <Form.Control placeholder="First name" controlId="firstName"/>
+                    <Form.Control placeholder="First Name" name="firstName" value={values.firstName}  onChange={(e) => handleChange(e)} controlId="firstName"/>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="Last name" controlId="lastName"/>
+                    <Form.Control placeholder="Last Name" name="lastName" value={values.lastName} onChange={(e) => handleChange(e)} controlId="lastName"/>
                 </Col>
             </Row>
 
-            <Form.Group className="mb-3" controlId="">
-                <Form.Label>Email Address</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" />
+            <Form.Group id='email-input' className="mb-3" controlId="">
+                <Form.Label className='form-label'>Email Address</Form.Label>
+                <Form.Control type="email" name="email" value={values.email} onChange={(e) => handleChange(e)} placeholder="name@example.com" />
             </Form.Group>
             <Form.Group className='mb-3' controlId='number'>
-                <Form.Label>Number</Form.Label>
-                <Form.Control type='phone-number' placeholder='Enter phone number'/>
+                <Form.Label className='form-label'>Phone Number</Form.Label>
+                <Form.Control type='phone-number'name="phoneNumber" value={values.phoneNumber} onChange={(e) => handleChange(e)} placeholder=''/>
                 </Form.Group>
             <Form.Group className="mb-3" controlId="address">
-                <Form.Label>Address </Form.Label>
-                <Form.Control placeholder="Apartment, studio, or floor" />
+                <Form.Label className='form-label'>Address </Form.Label>
+                <Form.Control value={values.address} name="address" onChange={(e) => handleChange(e)} placeholder="Apartment, studio, or floor" />
             </Form.Group>
 
             <Row className="mb-3">
                 <Form.Group as={Col} controlId="formGridCity">
-                    <Form.Label>City</Form.Label>
-                    <Form.Control />
+                    <Form.Label className='form-label'>City</Form.Label>
+                    <Form.Control value={values.city} name="city"  onChange={(e) => handleChange(e)}/>
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridState">
-                    <Form.Label>State</Form.Label>
-                    <Form.Select defaultValue="Choose..." id='state' name='state'>
+                    <Form.Label className='form-label'>State</Form.Label>
+                    <Form.Select value={values.state} name="state" onChange={(e) => handleChange(e)} defaultValue="Choose..." id='state' name='state'>
                         <option>Choose...</option>
                         <option value="AK">Alaska</option>
                         <option value="AL">Alabama</option>
@@ -111,26 +149,31 @@ const List = () => {
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridZip">
-                    <Form.Label>Zip</Form.Label>
-                    <Form.Control />
+                    <Form.Label className='form-label'>Zip</Form.Label>
+                    <Form.Control value={values.zip} name="zip" onChange={(e) => handleChange(e)}/>
                 </Form.Group>
             </Row>
                 <Form.Group controlId="formFileMultiple" className="mb-3">
-                    <Form.Label>Insert Photos</Form.Label>
+                    <Form.Label className='form-label'>Insert Photos</Form.Label>
                     <Form.Control type="file" multiple />
                 </Form.Group>
 
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Comments</Form.Label>
-                <Form.Control as="textarea" rows={3} />
+                <Form.Label className='form-label'>Comments</Form.Label>
+                <Form.Control value={values.comments} name="comments"  onChange={(e) => handleChange(e)} as="textarea" rows={3} />
             
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="success" onClick={(e) => handleSubmit(e)} type="submit">
                 Submit
             </Button>
         </Form>
         </Container>
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        Your listing is under Review!
+      </Modal.Header>
+    </Modal>
         </section>
     );
 }

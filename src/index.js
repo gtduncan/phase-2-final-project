@@ -4,11 +4,14 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import Auth0ProviderWithHistory from './auth0-provider-with-history'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+    // <Auth0ProviderWithHistory>
     <App />
+    // </Auth0ProviderWithHistory>
 );
 
 // If you want to start measuring performance in your app, pass a function

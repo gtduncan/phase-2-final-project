@@ -1,5 +1,5 @@
 import ListingCard from './ListingCard'
-import {Container, Pagination} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 
 
 const ListingContainer = ({properties, setMap, currentPage, setCurrentPage, getFavorites, map}) => {

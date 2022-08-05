@@ -53,7 +53,7 @@
   margin: 15px;
   box-sizing: border-box;
   position: relative;
-  bottom: 800px;
+  top: -800px;
   color: #E7E7E7;
 }
 
@@ -152,7 +152,7 @@
   height: 85%;
   text-align: left;
   margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 45px;
   background-color: white;
 }
 
@@ -233,4 +233,33 @@ button.accordion-button.collapsed
 }
 .footer {
   height: 40px;
+}
+
+.pagination .page-link {
+  background: #282c34;
+  color: white;
+}
+
+.form-header
+{
+  position: relative;
+  top: 30px;
+  color:#E7E7E7;
+}
+
+.form-label
+{
+  color:#E7E7E7;
+}
+
+#form-container
+{
+  background-color:#282c34;
+  margin-bottom: 40px;
+}
+
+#email-input
+{
+  position: relative;
+  top: 5px;
 }

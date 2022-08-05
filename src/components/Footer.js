@@ -8,7 +8,7 @@ const Footer = () => {
     <footer  class="footer fixed-bottom font-small cyan darken-3">
         
         <div  class="footer-copyright text-center text-white py-3 bg-dark ">
-            <p>© 2022 Copyright: Apartment Hunter </p>      
+            <p>© 2022 Copyright: Michael's Choice </p>      
         </div>
     
 
