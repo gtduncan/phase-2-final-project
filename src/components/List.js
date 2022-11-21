@@ -91,7 +91,7 @@ const List = () => {
 
                 <Form.Group as={Col} controlId="formGridState">
                     <Form.Label className='form-label'>State</Form.Label>
-                    <Form.Select value={values.state} name="state" onChange={(e) => handleChange(e)} defaultValue="Choose..." id='state' name='state'>
+                    <Form.Select value={values.state} name="state" onChange={(e) => handleChange(e)} defaultValue="Choose..." id='state' >
                         <option>Choose...</option>
                         <option value="AK">Alaska</option>
                         <option value="AL">Alabama</option>

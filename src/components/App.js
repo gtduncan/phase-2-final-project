@@ -95,7 +95,7 @@ useEffect(() => {
       <Router>
       <NavBar/>
         <Routes>
-          <Route exact path="/" element={<Home properties={properties}  setSort={setSort} getLocation={getLocation} showPosition={showPosition} currentPage={currentPage} setCurrentPage={setCurrentPage} setCurrentCity={setCurrentCity} setCurrentPage={setCurrentPage} currentState={currentState} setCurrentState={setCurrentState} getFavorites={getFavorites} setMap={setMap} map={map}/>}>
+          <Route exact path="/" element={<Home properties={properties}  setSort={setSort} getLocation={getLocation} showPosition={showPosition} currentPage={currentPage} setCurrentPage={setCurrentPage} setCurrentCity={setCurrentCity} currentState={currentState} setCurrentState={setCurrentState} getFavorites={getFavorites} setMap={setMap} map={map}/>}>
           </Route>
           <Route path="/list" element={<List/>}>
           </Route>
